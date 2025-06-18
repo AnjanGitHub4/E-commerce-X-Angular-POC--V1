@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>phone No.</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(users.length > 0){
+            <tr *ngFor="let s of users; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ s?.name }}</td>
+                <td>{{ s?.email }}</td>
+                <td>{{ s?.phone }}</td>
+                <td>
+                    <button (click)="viewStudentData(s?.id)">View</button>
+                </td>
+            </tr>
+        }@else {
+           <p style="text-align: center;" class="w-full"> No data found.</p>
+        }
+    </tbody>
+</table>

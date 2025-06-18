@@ -1,0 +1,52 @@
+<main id="hero-main">
+  <div class="container">
+    <div class="hero-form">
+      <form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        @if(isError){
+          <p class="error-msg invalid-log">{{errorMsg}}</p>
+        }
+        <h4 class="form-title">Sign in to your account</h4>
+        <div class="input-container">
+          <input 
+            placeholder="Enter username" 
+            type="text" 
+            id="username" 
+            name="username"
+            #username="ngModel" 
+            [(ngModel)]="user.username" 
+            required 
+          />
+          @if (username.invalid && (username.dirty || username.touched)) {
+          <div class="error-msg">
+            @if (username.errors?.['required']) {
+            username is required.
+            }
+          </div>
+          }
+        </div>
+        <div class="input-container">
+          <input 
+            placeholder="Enter password" 
+            type="password" 
+            id="password" 
+            name="password"
+            #password="ngModel" 
+            [(ngModel)]="user.password" 
+            required 
+          />
+          @if (password.invalid && (password.dirty || password.touched)) {
+          <div class="error-msg">
+            @if (password.errors?.['required']) {
+                password is required.
+            }
+          </div>
+          }
+        </div>
+        <div class="btn-action">
+          <button class="btn" type="submit"> Sign in </button>
+          <p class="signup-link"> No account? <a routerLink="/">Sign up</a> </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

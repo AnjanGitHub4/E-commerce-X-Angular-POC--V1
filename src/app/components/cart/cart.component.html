@@ -1,0 +1,65 @@
+<div class="container mx-auto w-11 py-2">
+    <div>
+        <h3>CART-({{ cartArr.length }})</h3>
+        <hr class="border-1 border-indigo-300 my-2" />
+    </div>
+
+    <!-- Cart Items -->
+    <div *ngIf="cartArr.length > 0">
+        <div class="orders-container">
+            <div *ngFor="let order of cartArr; let orderIdx = index"
+                class="order-section border-1 border-indigo-300 p-3 my-3 border-round-sm shadow-1 flex">
+
+                <!-- Order Details -->
+                <div class="order-info">
+                    <h3 class="m-0 mb-2">Order {{ orderIdx + 1 }}</h3>
+                    <p>Total Products: {{ order.totalProducts }}</p>
+                    <p>Total Quantity: {{ order.totalQuantity }}</p>
+                    <p>Total Price: {{ order.total | currency }}</p>
+                </div>
+
+                <!-- Products Inside Each Order -->
+                <div class="cart-card w-full">
+                    <div class="products flex flex-wrap md:align-items-center md:justify-content-center gap-2 py-2">
+                        <div class="product-card w-full lg:w-3 md:w-4 border-1 border-indigo-300 flex align-items-center gap-2 p-2 border-round-sm shadow-1"
+                            *ngFor="let product of order.products; let prodIdx = index">
+
+                            <div class="product-image border-1 border-indigo-100 relative">
+                                <img src="{{ product.thumbnail }}" alt="{{ product.title }}" width="100" height="100" />
+                                <div
+                                    class="qnty-badge absolute top-0 right-0 bg-indigo-400 text-white border-round-sm w-1rem h-1rem flex align-items-center justify-content-center text-xs">
+                                    {{ product.quantity }}
+                                </div>
+                            </div>
+
+                            <div class="card-body flex flex-column justify-content-between pl-2">
+                                <div class="product-info">
+                                    <h3 class="font-medium text-sm m-0 p-0">{{ product.title }}</h3>
+                                    <div class="product-rating flex align-items-center gap-2 pt-2">
+                                        <p class="text-xs">{{ product.price | currency }}</p>
+                                        <p-rating [(ngModel)]="value" [stars]="5" [dt]="iconColor" />
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="product-action flex align-items-center justify-content-end lg:gap-2 md:flex-wrap mt-3 mb-0">
+                                    <p-button icon="pi pi-trash" class="text-xs" severity="danger"
+                                        (onClick)="removeCartProduct(orderIdx, prodIdx)">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Empty Cart Message -->
+    <div *ngIf="cartArr.length === 0">
+        <p class="text-center">Your cart is empty. Add some products!</p>
+    </div>
+
+    <div class="back-btn flex justify-content-center mt-3">
+        <p-button label="Back" class="text-xs" icon="pi pi-arrow-left" severity="primary" (onClick)="goBack()"></p-button>
+    </div>
+</div>

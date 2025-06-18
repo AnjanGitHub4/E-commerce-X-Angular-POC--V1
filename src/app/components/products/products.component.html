@@ -1,0 +1,61 @@
+<main class="main">
+    <div class="hero-product-container mx-auto w-11">
+        <h3 class="font-medium py-2">Total Products: {{products.length}}</h3>
+        <div class="search-bar py-2 flex justify-content-center">
+            <input 
+                type="text" 
+                placeholder="Search products..." 
+                [(ngModel)]="searchProd"
+                (input)="products = transformData(searchProd)" 
+                class="px-2 py-2 w-full md:w-30rem" 
+            />
+        </div>
+        <div *ngIf="products.length > 0; else noItems">
+            <div class="products flex flex-wrap md:align-items-center md:justify-content-center gap-2 py-2">
+                <div class="product-card w-full lg:w-3 md:w-4 border-1 border-indigo-300 flex gap-2 p-2 border-round-sm shadow-1"
+                    *ngFor="let product of products; let idx = index">
+                    <div class="product-image border-1 border-indigo-100 relative">
+                        <img src="{{product.products[0].thumbnail}}" alt="Product 1" width="100" height="100" />
+                        <div
+                            class="qnty-badge absolute top-0 right-0 bg-indigo-400 text-white  border-round-sm w-1rem h-1rem flex align-items-center justify-content-center text-xs">
+                            {{product.products[0].quantity}}
+                        </div>
+                    </div>
+                    <div class="card-body flex flex-column justify-content-between pl-2z">
+                        <div class="product-info">
+                            <h3 class="font-medium text-sm m-0 p-0">{{product.products[0].title}}</h3>
+                            <div class="product-rating flex align-items-center gap-2 pt-2">
+                                <p class="text-xs">
+                                    {{product.products[0].price | currency}}
+                                </p>
+                                <p-rating [(ngModel)]="value" [stars]="5" [dt]="iconColor" />
+                            </div>
+                        </div>
+                        <div class="product-action flex align-items-center justify-content-between lg:gap-2 md:flex-wrap">
+                            <p-button label="Buy Now" [dt]="primaryBackground" class="text-xs" (onClick)="buyProd(product.products[0].id)"/>
+                            <p-button 
+                                label="Add Cart" 
+                                icon="pi pi-shopping-cart"  
+                                [dt]="successBackground"
+                                severity="success"
+                                class="text-xs"
+                                (onClick)="addToCart(product.products[0].id)" 
+                            />
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <!-- no items  -->
+        <ng-template #noItems>
+            <div class="text-center py-5">
+                <h4 class="text-red-500 font-medium">No items found</h4>
+            </div>
+        </ng-template>
+        <!-- alert -->
+         <div class="alert bg-green-500 text-white border-round-sm p-2 absolute" style="top:15%; right: 1%;"  *ngIf="alert">
+            <p>Product added to cart</p>
+         </div>
+    </div>
+</main>

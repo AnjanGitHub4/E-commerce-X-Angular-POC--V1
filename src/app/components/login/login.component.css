@@ -1,0 +1,117 @@
+#hero-main{
+  background-color: #000000fa;
+  background-color: #0c041ef4;
+  min-height: 100vh;
+}
+.hero-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.form {
+  /* background-color: rgba(241, 225, 225, 0.039); */
+  backdrop-filter: blur(4px);
+  display: block;
+  padding: 1rem;
+  width: 400px;
+  min-height: 10vh;
+  border-radius: 0.5rem;
+  /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+  */
+  box-shadow: 0 0 1.5px rgba(248, 231, 231, 0.3);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  color: #c9c3c3;
+}
+
+.input-container {
+  width: 100%;
+  position: relative;
+}
+
+.input-container input,
+.form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin-top: .5rem;
+}
+
+.form button{
+  margin-top: 1rem;
+}
+
+.input-container input {
+  background-color: #fff;
+  padding: .58rem 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.input-container span {
+  display: grid;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  place-content: center;
+}
+
+.btn-action{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  display: block;
+  padding: .75rem 1.25rem;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  /* line-height: 1.25rem; */
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.signup-link {
+  margin-top: .5rem;
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+
+.error-msg{
+  color: rgb(249, 14, 132);
+  margin: .25rem 1rem;
+}
+
+.invalid-log{
+  text-align: center;
+  background-color: rgb(222, 27, 89);
+  color: #e5e7eb;
+  padding: .5rem 0;
+  border-radius: .5rem;
+}

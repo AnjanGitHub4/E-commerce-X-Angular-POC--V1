@@ -1,0 +1,44 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav ul li{
+    & a{
+        color: #110e27;
+        letter-spacing: 1px;
+        transition: all .3s ease;
+        color: #7e49d3;
+        font-weight: 500;
+        &:hover{
+            color: rgb(106, 50, 248);
+        }
+    }
+}
+
+.is_user{
+    color: rgb(255, 0, 140);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.user-img{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    padding: .25rem;
+}

@@ -1,0 +1,51 @@
+<app-navbar [username]="username" [userImg]="userImg"></app-navbar>
+
+<main id="main">
+  <div class="container">
+    <div class="home-title">
+      <h3>Users Records</h3>
+      <hr class="mt-3"/>
+    </div>
+    <div class="row bg-white p-3">
+      <div class="col-1">
+        <!-- now app-student is becomes "user" beacuse requirement has been changed -->
+        <app-user                                                                     
+          [users] = 'users' 
+          (studentSelected)="handleStudentSelection($event)"></app-user>
+      </div>
+      <div class="col-2 w-full">
+        <!-- details page -->
+        @if(filterUser.length > 0){
+          <div *ngFor="let ns of filterUser" class="student-details"  [ngClass]="{'hidden':closeInfo, 'block': !closeInfo}">
+            <div class="details">
+              <h2>{{ ns.name }}</h2>
+              <p><strong>Username:</strong> {{ ns.username }}</p>
+              <p><strong>Email:</strong> {{ ns.email }}</p>
+              <p><strong>Phone:</strong> {{ ns.phone }}</p>
+              <p><strong>Website:</strong> <a href="http://{{ ns.website }}" target="_blank">{{ ns.website }}</a></p>
+              <hr />
+              <h3>Address</h3>
+              <p><strong>Street:</strong> {{ ns.address.street }}</p>
+              <p><strong>Suite:</strong> {{ ns.address.suite }}</p>
+              <p><strong>City:</strong> {{ ns.address.city }}</p>
+              <p><strong>Zip Code:</strong> {{ ns.address.zipcode }}</p>
+              <p><strong>Geo:</strong> Lat: {{ ns.address.geo.lat }}, Lng: {{ ns.address.geo.lng }}</p>
+              <hr />
+              <h3>Company Details</h3>
+              <p><strong>Company Name:</strong> {{ ns.company.name }}</p>
+              <p><strong>Catch Phrase:</strong> {{ ns.company.catchPhrase }}</p>
+              <p><strong>Business:</strong> {{ ns.company.bs }}</p>
+          </div>
+
+          <div class="close-info flex justify-content-end align-items-center mt-2">
+            <button class="btn btn-secondary" (click)="closeDetails()">Close</button>
+          </div>
+        </div>
+        }@else {
+          <p class="highlight-msg w-full">Click on <strong>View</strong> button to see the details</p>
+        }
+        
+      </div>
+    </div>
+  </div>
+</main>

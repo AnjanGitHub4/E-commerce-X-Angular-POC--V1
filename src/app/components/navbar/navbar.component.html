@@ -1,0 +1,36 @@
+<header>
+  <div class="container">
+    <nav>
+      <!-- user profile image -->
+      <div class="user-img">
+        <a routerLink="/home">
+          <img src={{userImg}} alt="user logo" width="50" height="50">
+        </a>
+      </div>
+
+      <ul>
+        <li>
+          <a routerLink="/home">Home</a>
+        </li>
+        <li>
+          <a routerLink="/dashboard">Products</a>
+        </li>
+        <li>
+          <a routerLink="/carts"> Cart
+            <i class="pi pi-shopping-cart relative bg-orange-300 p-2 border-circle text-indigo-900 shadow-2 font-semibold" style="font-size: .9rem;">
+              <div class="absolute text-lg font-semibold" style="top: -25%; right: -0%;" >{{cartCount}} </div>
+            </i>
+          </a>
+        </li>
+        <li>
+          @if(!isLoggedIn){
+          <a routerLink="/">login</a>
+          } @else {
+          <span class="is_user"> Welcome, {{username ? username : ' '}} </span>
+          <button (click)="logout()" class="btn">Logout</button>
+          }
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
